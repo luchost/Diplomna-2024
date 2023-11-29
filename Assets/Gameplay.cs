@@ -40,3 +40,4 @@ public class Gameplay : MonoBehaviour
 // class AreaEffect, inherits Effect
 // - automatically adds and maintains a list of effects in all game objects in a specific area (point, radius)
 // - keeps an internal list of object "last known to be" in the area, tracks when new objects need to enter or leave this list
+// - virtual methods to add and remove Effects to/from a particular object

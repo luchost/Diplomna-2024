@@ -64,9 +64,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AreaEffect.cs" />
     <Compile Include="Assets\Bullet.cs" />
+    <Compile Include="Assets\ColorizableObject.cs" />
+    <Compile Include="Assets\Effect.cs" />
+    <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\Gameplay.cs" />
+    <Compile Include="Assets\InteractableObject.cs" />
     <Compile Include="Assets\MovementController.cs" />
+    <Compile Include="Assets\PaintBullet.cs" />
+    <Compile Include="Assets\Tree.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

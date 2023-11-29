@@ -14,30 +14,43 @@ public class MovementController : MonoBehaviour
     private float speed = 5f;
     public Rigidbody rigidbody;
     public GameObject Bullet;
+    public GameObject PaintBullet;
+    public GameColor BulletColor = GameColor.Red;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         playerCamera = GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 Spawnpoint = this.transform.position;
+        Spawnpoint.z += 1.5f;
+        Spawnpoint.y += 2f;
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject Bulett = Instantiate(Bullet, this.transform.position*1.1f, Quaternion.identity);
-            Bulett.GetComponent<Transform>().GetComponent<Bullet>().orientaion = orientation;
+            GameObject BulletObj = Instantiate(Bullet, Spawnpoint, Quaternion.identity);
+            BulletObj.GetComponent<Transform>().GetComponent<Bullet>().orientaion = orientation;
         }
-                float move = Input.GetAxis("Vertical")*speed;
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject BulletObj = Instantiate(PaintBullet, Spawnpoint, Quaternion.identity);
+            var bullet = BulletObj.GetComponent<Transform>().GetComponent<PaintBullet>();
+            bullet.orientaion = orientation;
+            bullet.color = BulletColor;
+        }
+        float move = Input.GetAxis("Vertical")*speed;
                 rigidbody.velocity = orientation.forward*move;
 
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity.x * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity.y * Time.deltaTime;
         
             xLocalRotation -= mouseX;
-            xLocalRotation = Mathf.Clamp(xLocalRotation, -maxMouseRotationUp, maxMouseRotationDown);
+           // xLocalRotation = Mathf.Clamp(xLocalRotation, -maxMouseRotationUp, maxMouseRotationDown);
 
             
             Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * 200f, Color.green);

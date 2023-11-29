@@ -7,13 +7,14 @@ public class Bullet : MonoBehaviour
 
     public Rigidbody rigidbody;
     public Transform orientaion;
+    public GameObject me;
     private float speed = 20f;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = orientaion.forward* speed;
-        DestroyAfterTime();
+       StartCoroutine( DestroyAfterTime());
     }
 
     // Update is called once per frame
@@ -24,7 +25,13 @@ public class Bullet : MonoBehaviour
     
     IEnumerator  DestroyAfterTime()
     {
-       yield return new WaitForSeconds(2f);
-        Destroy(this);
+        
+        yield return new WaitForSeconds(2f);
+        Destroy(me);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(me);
     }
 }
