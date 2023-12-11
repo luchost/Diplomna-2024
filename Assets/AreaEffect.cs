@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AreaEffect : Effect
 {
-    int radius;
+    int radius = 100000;
     HashSet<GameObject> affected;
 
     Collider[] GetObjectsInRange()

@@ -110,6 +110,7 @@ MonoBehaviour:
   rigidbody: {fileID: 6162439265834277632}
   orientaion: {fileID: 0}
   me: {fileID: 7835745989282996062}
+  color: 0
 --- !u!54 &6162439265834277632
 Rigidbody:
   m_ObjectHideFlags: 0

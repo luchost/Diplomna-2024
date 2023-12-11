@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Transform orientaion;
     public GameObject me;
     private float speed = 20f;
+    public int damage = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(me);
+        //Destroy(me);
     }
 }
