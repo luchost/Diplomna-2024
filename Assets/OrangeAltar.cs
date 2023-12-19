@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrangeAltar : MonoBehaviour
+public class OrangeAltar : AreaEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AddEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Enemy"))
+        {
+            obj.AddComponent<BurnEffect>();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void RemoveEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Enemy"))
+        {
+            Destroy(obj.GetComponent<BurnEffect>());
+        }
     }
 }

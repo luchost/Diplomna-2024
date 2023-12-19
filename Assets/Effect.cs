@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
-    void Start()
+    public virtual void Start()
     {
         StartCoroutine(UpdateCall());
     }

@@ -18,4 +18,13 @@ public class CharacterStats : MonoBehaviour
     {
         
     }
+    public void TakeDamage(int damage)
+    {
+        Effect[] effects = gameObject.GetComponents<Effect>();
+        foreach (var effect in effects)
+        {
+            damage = effect.OnBeforeTakeDamage(damage);
+        }
+        health -= damage;
+    }
 }

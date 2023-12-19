@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 330895491571832020}
   - component: {fileID: -6036293413697323149}
   - component: {fileID: 8769290259750551032}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Attack
   m_Icon: {fileID: 0}
@@ -123,6 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81ef603d1b287b489a14f18a121dab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: -6036293413697323149}
-  orientaion: {fileID: 0}
-  me: {fileID: 3818798356359018112}
+  direction: {x: 0, y: 0, z: 0}
+  damage: 20

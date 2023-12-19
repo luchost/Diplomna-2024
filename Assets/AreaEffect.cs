@@ -5,7 +5,7 @@ using UnityEngine;
 public class AreaEffect : Effect
 {
     int radius = 100000;
-    HashSet<GameObject> affected;
+    HashSet<GameObject> affected = new HashSet<GameObject>();
 
     Collider[] GetObjectsInRange()
     {
@@ -26,7 +26,8 @@ public class AreaEffect : Effect
         foreach (var obj in old_affected)
         {
             affected.Remove(obj);
-            RemoveEffectsForObject(obj);
+            if (obj != null)
+                RemoveEffectsForObject(obj);
         }
     }
 

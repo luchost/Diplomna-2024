@@ -6,12 +6,12 @@ public class HealEffect :Effect
 {
     public override void GameUpdate()
     {
-        int currentHealth = this.GetComponentInParent<CharacterStats>().health;
-        int maxHealth = this.GetComponentInParent<CharacterStats>().maxHealth;
-        currentHealth += 5;
+        int currentHealth = transform.gameObject.GetComponent<CharacterStats>().health;
+        int maxHealth = transform.gameObject.GetComponent<CharacterStats>().maxHealth;
+        transform.gameObject.GetComponent<CharacterStats>().health += 5;
         if (currentHealth > maxHealth)
         {
-            currentHealth = maxHealth;
+            transform.gameObject.GetComponent<CharacterStats>().health = maxHealth;
         }
     }
 }

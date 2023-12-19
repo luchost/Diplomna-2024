@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
-    public Rigidbody rigidbody;
-    public Transform orientaion;
-    public GameObject me;
+    public Vector3 direction;
     private float speed = 20f;
     public int damage = 20;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = orientaion.forward* speed;
-       StartCoroutine( DestroyAfterTime());
+        var rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = direction.normalized * speed;
+        StartCoroutine( DestroyAfterTime());
     }
 
     // Update is called once per frame
@@ -24,15 +21,14 @@ public class Bullet : MonoBehaviour
         
     }
     
-    IEnumerator  DestroyAfterTime()
-    {
-        
+    IEnumerator DestroyAfterTime()
+    {        
         yield return new WaitForSeconds(2f);
-        Destroy(me);
+        Destroy(transform.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Destroy(me);
+        Destroy(transform.gameObject);
     }
 }
