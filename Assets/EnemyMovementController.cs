@@ -1,22 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyMovementController : MonoBehaviour
+public class EnemyMovementController : AIMovementController
 {
-    public GameObject target;
-   public NavMeshAgent agent;
-   
-    // Start is called before the first frame update
-    void Start()
+    public override bool IsValidTarget(GameObject target)
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (target.CompareTag("Friendly") || target.CompareTag("Food"))
+            return true;
+
+        return false;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public override float GetDesiredRange(GameObject target)
     {
-        agent.SetDestination(target.transform.position);
+        if(target.CompareTag("Friendly"))
+            return 20f;
+
+        return 2f;
+    }
+
+    public override void Interact(GameObject target)
+    {
+        if(target.CompareTag("Friendly"))
+            gameObject.GetComponent<EnemyController>().Attack(target);
+        else
+            gameObject.GetComponent<EnemyController>().Eat(target);
+    }
+
+    public override bool BetterTarget(GameObject currentTarget, GameObject potenialTarget)
+    {
+        if (currentTarget.CompareTag("Friendly") && potenialTarget.CompareTag("Food"))
+            return true;
+
+        return false;
     }
 }
