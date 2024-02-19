@@ -26,22 +26,7 @@ public class EnemyController : MonoBehaviour
         }
     
     }
-    public void TakeDamage(int damage) 
-    {
-       Effect[] effects = gameObject.GetComponents<Effect>();
-        foreach (var effect in effects)
-        {
-            damage = effect.OnBeforeTakeDamage(damage);
-        }
-        health -= damage;
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.gameObject.CompareTag("Attack"))
-        {
-            TakeDamage(collision.transform.gameObject.GetComponent<Bullet>().damage);
-        }
-    }
+   
     public void Attack(GameObject target) 
     {
 

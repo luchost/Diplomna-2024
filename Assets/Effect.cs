@@ -18,7 +18,9 @@ public class Effect : MonoBehaviour
     }
 
     public virtual void GameUpdate() {}
-    public virtual int OnBeforeTakeDamage(int damage) { return damage; }
+    public virtual float OnBeforeTakeDamage(float damage) { return damage; }
+    public virtual float OnBeforeDealDamage(float damage) { return damage; }
+    public virtual float ModifyRange(float range) { return range;  }
 }
 
 public class TestEffect : Effect

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AreaEffect : Effect
 {
-    int radius = 100000;
+    int radius = 25;
     HashSet<GameObject> affected = new HashSet<GameObject>();
 
     Collider[] GetObjectsInRange()
     {
-        return Physics.OverlapSphere(transform.position, radius, 1);
+        return Physics.OverlapSphere(transform.position, radius);
     }
 
     void UpdateAffectedObjects(Collider[] objects)

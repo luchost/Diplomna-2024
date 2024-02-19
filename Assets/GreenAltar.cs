@@ -16,6 +16,7 @@ public class GreenAltar : AreaEffect
         if (obj.CompareTag("Enemy"))
         {
             Destroy(obj.GetComponent<BleedEffect>());
+            Destroy(obj.GetComponent<ParticleManager>());
         }
     }
 }

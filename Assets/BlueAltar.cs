@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueAltar : MonoBehaviour
+public class BlueAltar : AreaEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AddEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Enemy"))
+        {
+            obj.AddComponent<SuckEffect>();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void RemoveEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Enemy"))
+        {
+            Destroy(obj.GetComponent<SuckEffect>());
+        }
     }
 }

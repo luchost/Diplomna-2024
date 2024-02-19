@@ -1,24 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int maxHealth = 200;
-    public int health = 100;
-    public int attackDamage;
-    // Start is called before the first frame update
-    void Start()
+    public float maxHealth = 200;
+    public float health = 200;
+    public float baseAttackDamage;
+    public Slider healthBar;
+
+    private void Start()
     {
-        
+        healthBar = GetComponentInChildren<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (health <= 0)
+        {
+            if (gameObject.name == "Player")
+            {
+                SceneManager.LoadScene("RestartLevelOrQuit");
+                Cursor.lockState = CursorLockMode.None;
+                HelpPopUps.Instance.TutorialSetText(0, "");
+            }
+            else
+                Destroy(transform.gameObject);
+        }
     }
-    public void TakeDamage(int damage)
+
+    public void DealDamage(GameObject target)
+    {
+        float damage = baseAttackDamage;
+        Effect[] effects = gameObject.GetComponents<Effect>();
+        foreach (var effect in effects)
+        {
+            damage = effect.OnBeforeDealDamage(damage);
+        }
+        target.GetComponent<CharacterStats>().TakeDamage(damage);
+    }
+
+    public void TakeDamage(float damage)
     {
         Effect[] effects = gameObject.GetComponents<Effect>();
         foreach (var effect in effects)
@@ -26,5 +50,6 @@ public class CharacterStats : MonoBehaviour
             damage = effect.OnBeforeTakeDamage(damage);
         }
         health -= damage;
+        healthBar.value = health / maxHealth;
     }
 }

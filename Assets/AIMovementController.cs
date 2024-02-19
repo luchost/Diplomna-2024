@@ -10,38 +10,51 @@ public class AIMovementController : MonoBehaviour
     public float visionRange = 30.0f;
     private float nextFind = 0.0f;
     private float timeToNextFind = 5.0f;
-
+    public bool canMove = true;
+    public bool pickFriendly =  false;
+    public GameObject forcedTarget;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         // Find or improve the target
         // (this will also handle the case if the current target is invalid)
-        if (target == null)
+        if (forcedTarget != null)
         {
-            target = FindBestTarget();
-            nextFind = Time.time + timeToNextFind;
+            target = forcedTarget;
         }
-        if (Time.time > nextFind)
+        else
         {
-            nextFind += timeToNextFind;
-            target = FindBestTarget();
+            if (target == null)
+            {
+                target = FindBestTarget();
+                nextFind = Time.time + timeToNextFind;
+            }
+            if (Time.time > nextFind)
+            {
+                nextFind += timeToNextFind;
+                target = FindBestTarget();
+            }
         }
         if (target == null)
             return;
 
         float range = GetDesiredRange(target);
-        if (Vector3.Distance(transform.position, target.transform.position) <= range)
+        Effect[] effects = gameObject.GetComponents<Effect>();
+        foreach (var effect in effects)
         {
-            agent.SetDestination(transform.position);
+            range = effect.ModifyRange(range);
+        }
+        if (Vector3.Distance(transform.position, target.transform.position) <= range )
+        {
+            ApproachPoint(transform.position);
             Interact(target);
-        } else if (IsValidTarget(target))
+        } else if (IsValidTarget(target) && canMove)
         {
-            agent.SetDestination(target.transform.position);
+            ApproachPoint(target.transform.position);
         } else
         {
             target = null; // invalid target
@@ -51,20 +64,24 @@ public class AIMovementController : MonoBehaviour
     // Finds the best target in range, for which IsValidTarget is 'true'
     GameObject FindBestTarget() {
         var bestTarget = target;
-        var objects = Physics.OverlapSphere(transform.position, visionRange, 1);
+        var objects = Physics.OverlapSphere(transform.position, visionRange);
         foreach (var obj in objects)
             if (CompareTarget(bestTarget, obj.gameObject))
                 bestTarget = obj.gameObject;
         return bestTarget;
     }
-    bool CompareTarget(GameObject currentTarget, GameObject potenialTarget) {
-        if (!IsValidTarget(potenialTarget))
+    bool CompareTarget(GameObject currentTarget, GameObject potentialTarget) {
+        if (!IsValidTarget(potentialTarget))
             return false;
         if (currentTarget == null)
             return true;
-        return BetterTarget(currentTarget, potenialTarget);
+        return BetterTarget(currentTarget, potentialTarget);
     }
-    public virtual bool BetterTarget(GameObject currentTarget, GameObject potenialTarget) {
+    public virtual void ApproachPoint(Vector3 destination)
+    {
+        agent.SetDestination(destination);
+    }
+    public virtual bool BetterTarget(GameObject currentTarget, GameObject potentialTarget) {
         return true;
     }
     public virtual bool IsValidTarget(GameObject target) {

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{74237735-1B82-7C2B-2452-7555484613C3}</ProjectGuid>
+    <ProjectGuid>{FBDEFD51-01F9-55B8-54D5-C2F767AC644D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>4.11.4.0</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>4.8.2.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>2019.4.15f1</UnityVersion>
@@ -66,29 +66,83 @@
   <ItemGroup>
     <Compile Include="Assets\AIMovementController.cs" />
     <Compile Include="Assets\Altar.cs" />
+    <Compile Include="Assets\Animation.cs" />
+    <Compile Include="Assets\AoeBullet.cs" />
     <Compile Include="Assets\AreaEffect.cs" />
     <Compile Include="Assets\BleedEffect.cs" />
     <Compile Include="Assets\BlueAltar.cs" />
+    <Compile Include="Assets\BlueMushroom.cs" />
+    <Compile Include="Assets\BlueTree.cs" />
     <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\BurnEffect.cs" />
     <Compile Include="Assets\CharacterStats.cs" />
+    <Compile Include="Assets\CollideAnimations.cs" />
     <Compile Include="Assets\ColorizableObject.cs" />
+    <Compile Include="Assets\Confusebullet1.cs" />
     <Compile Include="Assets\Effect.cs" />
     <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\EnemyMovementController.cs" />
     <Compile Include="Assets\Gameplay.cs" />
     <Compile Include="Assets\GreenAltar.cs" />
+    <Compile Include="Assets\GreenLeaf.cs" />
+    <Compile Include="Assets\GreenMushroom.cs" />
+    <Compile Include="Assets\GreenTree.cs" />
     <Compile Include="Assets\HealEffect.cs" />
+    <Compile Include="Assets\HelpPopUps.cs" />
+    <Compile Include="Assets\HelpTexts.cs" />
     <Compile Include="Assets\InteractableObject.cs" />
+    <Compile Include="Assets\Leaf.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\MovementController.cs" />
+    <Compile Include="Assets\Mushroom.cs" />
+    <Compile Include="Assets\MushroomBoost.cs" />
+    <Compile Include="Assets\NextButton.cs" />
+    <Compile Include="Assets\Objective.cs" />
     <Compile Include="Assets\OrangeAltar.cs" />
+    <Compile Include="Assets\OrangeLeaf.cs" />
+    <Compile Include="Assets\OrangeMushroom.cs" />
+    <Compile Include="Assets\OrangeTree.cs" />
     <Compile Include="Assets\PaintBullet.cs" />
+    <Compile Include="Assets\ParticleManager.cs" />
     <Compile Include="Assets\PurpleAltar.cs" />
+    <Compile Include="Assets\PurpleMushroom.cs" />
+    <Compile Include="Assets\PurpleTree.cs" />
     <Compile Include="Assets\RedAltar.cs" />
+    <Compile Include="Assets\RedMushroom.cs" />
+    <Compile Include="Assets\RedMushroomEffect.cs" />
     <Compile Include="Assets\RedTreeEffect.cs" />
+    <Compile Include="Assets\SuckEffect.cs" />
+    <Compile Include="Assets\Suffocate.cs" />
     <Compile Include="Assets\Tree.cs" />
+    <Compile Include="Assets\TutorialShooting.cs" />
+    <Compile Include="Assets\Vulnerable.cs" />
     <Compile Include="Assets\YellowAltar.cs" />
+    <Compile Include="Assets\YellowLeaf.cs" />
+    <Compile Include="Assets\YellowMushroom.cs" />
     <Compile Include="Assets\YellowTree.cs" />
+    <Compile Include="Assets\otherAnimation.cs" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Lana Studio\Hyper Casual FX\Demo\Readme.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -618,31 +672,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/ivkos/Downloads/Diplomna2024/Diplomna-2024/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Diplomna 2024/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

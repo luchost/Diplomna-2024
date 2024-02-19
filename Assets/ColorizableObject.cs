@@ -19,13 +19,12 @@ public enum GameColor
 public class ColorizableObject : MonoBehaviour
 {
     GameColor color;
-   
     public void AddColor(GameColor added_color)
     {
         var newcolor = (GameColor)((int)color | (int)added_color);
-        if(newcolor == color)
+        if(newcolor == color || newcolor == GameColor.White)
             SetColor(added_color);
-        if (newcolor != GameColor.White)
+        else if (newcolor != GameColor.White)
             SetColor(newcolor);
     }
 

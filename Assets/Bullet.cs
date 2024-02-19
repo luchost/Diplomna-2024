@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Vector3 direction;
     private float speed = 20f;
-    public int damage = 20;
+    public float damage = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +29,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        CharacterStats stats;
+        if (collision.gameObject.TryGetComponent(out stats))
+        {
+            stats.TakeDamage(damage);
+        }
         Destroy(transform.gameObject);
     }
 }

@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurpleAltar : MonoBehaviour
+public class PurpleAltar : AreaEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void AddEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Friendly"))
+        {
+            obj.AddComponent<MushroomBoost>();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void RemoveEffectsForObject(GameObject obj)
     {
-        
+        if (obj.CompareTag("Friendly"))
+        {
+            Destroy(obj.GetComponent<MushroomBoost>());
+        }
     }
 }
